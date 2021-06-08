@@ -1,16 +1,24 @@
-.container{
-    display: grid;
-    grid-template-columns: 2fr 5fr 1 fr;
-    grid-template-rows: 1fr 1fr;
+.container {
+  display: grid;
+  grid-template-columns: 2fr 5fr 1 fr;
+  grid-template-rows: 3fr 1fr;
+  grid-gap: 5px;
 }
-.textfield{
-    grid-column: 2/ span 1;
-    grid-row: 2 /span 1;
+.textfield {
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+  outline: 1px solid black;
 }
 .button {
-    grid-column: 3/ span 1;
-    grid-row: 2/ span 1;
+  grid-column: 3 / span 1;
+  grid-row: 2 / span 1;
 }
 .title {
-    grid-column: 1/4;
+  grid-column: 1/4;
+  font-family: -apple-system, BlinkMacSystemFont, Helvetica;
+  font-size: 2em;
+}
+
+.textfield:focus {
+  outline: none;
 }
