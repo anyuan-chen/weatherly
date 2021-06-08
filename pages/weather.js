@@ -1,28 +1,26 @@
 import React from "react";
 import Router from "next/router";
 import { useRouter } from "next/router";
-import {useEffect, useState} from "react"
+import { useEffect, useState } from "react";
+import { getWeather } from "../lib/getWeatherData";
 
 export default function Location() {
-  const [weatherData, setweatherData] = useState({
-    id: 32
-  })
+  const [weather, setWeather] = useState();
   const router = useRouter();
   const { location } = router.query;
 
   useEffect(() => {
-    async () => {
-      const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${process.env.APP_ID}`
-      );
-      const data = await res.json()
-      setweatherData(data);
-    };
+    getWeather(location).then((data) => setWeather(data));
+    console.log(weather);
   }, []);
 
-  return (
-    <div>
-      <h1>{weatherData.id}</h1>
-    </div>
-  );
+  if (weather) {
+    return (
+      <div>
+        <h1>{weather.list[0].main.temp}</h1>
+      </div>
+    );
+  } else {
+    return <h1>Loading....</h1>;
+  }
 }

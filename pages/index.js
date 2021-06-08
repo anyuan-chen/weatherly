@@ -7,6 +7,7 @@ import { useState } from "react";
 export default function Home({ data }) {
   const [userLocation, setuserLocation] = useState("");
   const handleChange = (event) => {
+    console.log(process.env.NEXT_PUBLIC_APP_ID)
     setuserLocation(event.target.value);
   };
   return (
@@ -23,20 +24,3 @@ export default function Home({ data }) {
   );
 }
 
-async function getWeatherInfo(place) {
-  const res = await fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=${place}&appid=${process.env.APP_ID}`
-  );
-  const weatherData = await res.json();
-  console.log(props, "hi");
-  if (!weatherData) {
-    return {
-      notfound: true,
-    };
-  }
-  return {
-    props: {
-      weatherData,
-    },
-  };
-}
