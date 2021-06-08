@@ -1,7 +1,7 @@
 import { data } from "autoprefixer";
 import Head from "next/head";
 import Location from "../components/location";
-import Link from 'next/link'
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Home({ data }) {
@@ -14,7 +14,7 @@ export default function Home({ data }) {
       <h1> Enter A Location </h1>
       <label> Location </label>
       <textarea value={userLocation} onChange={handleChange} required />
-      <Link href = {`/weather/${userLocation}`}>
+      <Link href={`/weather?location=${userLocation}`}>
         <a>
           <button> Get the weather!</button>
         </a>
