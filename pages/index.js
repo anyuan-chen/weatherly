@@ -1,6 +1,7 @@
 import { data } from "autoprefixer";
 import Head from "next/head";
 import Location from "../components/location";
+import Link from 'next/link'
 import { useState } from "react";
 
 export default function Home({ data }) {
@@ -8,18 +9,16 @@ export default function Home({ data }) {
   const handleChange = (event) => {
     setuserLocation(event.target.value);
   };
-  const submission = async () => {
-    console.log(userLocation);
-    const info = getWeatherInfo(userLocation);
-  };
   return (
     <div>
       <h1> Enter A Location </h1>
-      <form onSubmit={submission}>
-        <label> Location </label>
-        <textarea value={userLocation} onChange={handleChange} required />
-        <button type="submit">Get the weather!</button>
-      </form>
+      <label> Location </label>
+      <textarea value={userLocation} onChange={handleChange} required />
+      <Link href = {`/weather/${userLocation}`}>
+        <a>
+          <button> Get the weather!</button>
+        </a>
+      </Link>
     </div>
   );
 }
