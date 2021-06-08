@@ -1,0 +1,16 @@
+.container{
+    display: grid;
+    grid-template-columns: 2fr 5fr 1 fr;
+    grid-template-rows: 1fr 1fr;
+}
+.textfield{
+    grid-column: 2/ span 1;
+    grid-row: 2 /span 1;
+}
+.button {
+    grid-column: 3/ span 1;
+    grid-row: 2/ span 1;
+}
+.title {
+    grid-column: 1/4;
+}

@@ -3,6 +3,7 @@ import Head from "next/head";
 import Location from "../components/location";
 import Link from "next/link";
 import { useState } from "react";
+import styles from './index.module.css'
 
 export default function Home({ data }) {
   const [userLocation, setuserLocation] = useState("");
@@ -11,13 +12,13 @@ export default function Home({ data }) {
     setuserLocation(event.target.value);
   };
   return (
-    <div>
-      <h1> Enter A Location </h1>
-      <label> Location </label>
-      <textarea value={userLocation} onChange={handleChange} required />
+    <div className={styles.container}>
+      <h1 className = {styles.title}> Enter A Location </h1>
+      <label className = {styles.label}> Location </label>
+      <textarea className = {styles.textarea} rows="1" value={userLocation} onChange={handleChange} required />
       <Link href={`/weather?location=${userLocation}`}>
         <a>
-          <button> Get the weather!</button>
+          <button className = {styles.button}> Get the weather!</button>
         </a>
       </Link>
     </div>

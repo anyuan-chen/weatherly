@@ -15,12 +15,16 @@ export default function Location() {
   }, []);
 
   if (weather) {
+    if (!weather.hasOwnProperty('list')){
+      return <h1> City Not Found</h1>
+    }
     return (
       <div>
         <h1>{weather.list[0].main.temp}</h1>
       </div>
     );
-  } else {
+  } 
+  else {
     return <h1>Loading....</h1>;
   }
 }
